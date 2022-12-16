@@ -31,7 +31,7 @@
       </div>
       <div class="w-full md:w-4/12 px-4 mr-auto ml-auto mt-24">
         <div class=" relative flex flex-col min-w-0 break-words w-full mb-2 shadow-lg rounded-lg bg-pink-500">
-          <video autoplay controls src="/css/Home/img/prueba.mp4"  class="w-full align-middle rounded-t-lg"></video>
+          <video autoplay controls muted src="/css/Home/img/prueba.mp4"  class="w-full align-middle rounded-t-lg"></video>
           <blockquote class="relative p-8 mb-4">
             <h4 class="text-xl font-bold text-white">
               Contratos
