@@ -104,6 +104,7 @@
                                         </path>
                                     </svg>
                                     <span class="mt-2 xl:mt-0">
+                                        {{$inmueble['consecutivo']}}
 
                                     </span>
                                 </p>
