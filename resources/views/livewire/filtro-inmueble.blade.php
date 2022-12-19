@@ -247,7 +247,7 @@
                 class=" px-4 grid sm:px-6 lg:px-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-6 gap-y-8  ">
                 @foreach ($inmuebles as $inmueble)
                     <div class="relative mx-2 mt-4 w-full">
-                        <a href="#" style="text-decoration: none;"
+                        <a href="{{route('inmuebles.show',$popular['consecutivo'])}}" style="text-decoration: none;"
                             class="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
                             <div class="shadow-lg p-4 rounded-lg bg-white ">
                                 <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
