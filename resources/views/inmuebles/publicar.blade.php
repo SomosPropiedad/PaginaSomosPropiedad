@@ -6,7 +6,7 @@
 <section class=" bg-blueGray-200 -mt-24 py-10">
   <div class="container mx-auto px-4">
     <div class="flex flex-wrap">
-      <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+      <div class="lg:pt-12 py-8 w-full md:w-4/12 px-4 text-center">
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-1 shadow-lg rounded-lg">
           <div class="px-4 flex-auto">
           </div>
