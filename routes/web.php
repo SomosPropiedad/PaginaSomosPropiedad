@@ -28,7 +28,7 @@ Route::get('/', HomeHomeController::class )->name('home');
 Route::get('Inmuebles',[InmueblesController::class, 'index'])->name('inmuebles.index');
 
 //ruta informacion de contratis
-Route::get('publicar_inmueble',[PublicarController::class, 'index'])->name('inmuebles.publicar')->middleware('auth');
+Route::get('publicar_inmueble',[PublicarController::class, 'index'])->name('inmuebles.publicar');
 
 
 //ruta para show de los inmueble

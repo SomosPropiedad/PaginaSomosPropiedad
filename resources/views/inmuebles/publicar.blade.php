@@ -6,7 +6,7 @@
 <section class=" bg-blueGray-200 -mt-24 py-10">
   <div class="container mx-auto px-4">
     <div class="flex flex-wrap">
-      <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+      <div class="lg:pt-12 py-8 w-full md:w-4/12 px-4 text-center">
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-1 shadow-lg rounded-lg">
           <div class="px-4 flex-auto">
           </div>
@@ -31,7 +31,7 @@
       </div>
       <div class="w-full md:w-4/12 px-4 mr-auto ml-auto mt-24">
         <div class=" relative flex flex-col min-w-0 break-words w-full mb-2 shadow-lg rounded-lg bg-pink-500">
-          <video autoplay controls muted src="/css/Home/img/prueba.mp4"  class="w-full align-middle rounded-t-lg"></video>
+          <video autoplay controls muted loop src="/css/Home/img/Videonat1.mp4"  class="w-full align-middle rounded-t-lg"></video>
           <blockquote class="relative p-8 mb-4">
             <h4 class="text-xl font-bold text-white">
               Contratos
