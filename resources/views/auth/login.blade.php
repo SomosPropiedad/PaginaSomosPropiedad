@@ -95,7 +95,7 @@
 
                              </div>
                          </form>
-                         <p class="terms-conditions text-center">© 2020 All Rights Reserved. Somos Propiedad,<a href="javascript:void(0);">Terminos & Condiciones.</a>
+                         <p class="terms-conditions text-center">© 2023 All Rights Reserved. Somos Propiedad,<a href="javascript:void(0);">Terminos & Condiciones.</a>
                          </p>
 
                      </div>

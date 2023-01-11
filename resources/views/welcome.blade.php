@@ -305,7 +305,7 @@
                     </li>
                 </ul>
                 <div class="copy-right">
-                    <span>Copyright &copy; 2022 Somos Propiedad. All rights reserved</span>
+                    <span>Copyright &copy; 2023 Somos Propiedad. All rights reserved</span>
                 </div>
             </div>
         </div>
