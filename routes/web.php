@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\Calculadora\CalcularController;
 use App\Http\Controllers\Contacto\AyudaController;
+use App\Http\Controllers\Formularios\FormularioController as FormulariosFormularioController;
 use App\Http\Controllers\Home\HomeController as HomeHomeController;
 use App\Http\Controllers\Inmuebles\FormularioController;
 use App\Http\Controllers\Inmuebles\InmueblesController;
@@ -36,7 +37,15 @@ Route::get('inmueble/{popular}',[InmueblesController::class, 'show'])->name('inm
 
 
 //ruta de formulario para publicar inmueble
-Route::get('publicar_formulario', [FormularioController::class,'index'])->name('inmuebles.formulario')->middleware('auth');
+Route::resource('publicar_formulario', FormulariosFormularioController::class)->names('inmuebles.formulario')->middleware('auth');
+
+Route::post('formulario_create', [FormulariosFormularioController::class,'comodidades'])->name('formulario.comodidades');
+
+Route::post('form_create', [FormulariosFormularioController::class,'inmueble'])->name('formulario.inmueble');
+
+Route::post('inmueble/{inmueble}/files', [FormulariosFormularioController::class,'files'])->name('inmueble.files');
+
+
 
 
 //ruta de calculadora

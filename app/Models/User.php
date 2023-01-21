@@ -17,6 +17,8 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    const activo = 1;
+    const inactivo = 2;
 
     /**
      * The attributes that are mass assignable.
@@ -58,4 +60,24 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+
+    //relacion uno a uno
+    public function propietario()
+    {
+        return $this->hasOne(Propietario::class);
+    }
+
+    //relacion uno a muchos
+    public function inmueble_publish()
+    {
+        return $this->hasMany(Inmueble::class);
+    }
+
+    //relacion muchos a muchos
+
+    public function inmueble_enrolled()
+    {
+        return $this->belongsToMany(Inmueble::class);
+    }
 }

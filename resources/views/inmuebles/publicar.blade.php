@@ -27,7 +27,7 @@
         <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-blueGray-600">
             ¿Buscas una casa nueva? ¿Quieres alquilar o verder tu casa? Somos propiedad te ayuda a encontrar la solucion perfecta para ti.
         </p>
-        <a href="{{route('inmuebles.formulario') }}" class="bg-gradient-to-r from-indigo-400 to-pink-400 hover:scale-105  shadow-cla-blue px-4 py-2 rounded-lg">Publicar inmueble</a>
+        <a href="{{url('publicar_formulario') }}" class="bg-gradient-to-r from-indigo-400 to-pink-400 hover:scale-105  shadow-cla-blue px-4 py-2 rounded-lg">Publicar inmueble</a>
       </div>
       <div class="w-full md:w-4/12 px-4 mr-auto ml-auto mt-24">
         <div class=" relative flex flex-col min-w-0 break-words w-full mb-2 shadow-lg rounded-lg bg-pink-500">

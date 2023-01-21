@@ -6,6 +6,10 @@
 
 
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css"
+            integrity="sha512-jU/7UFiaW5UBGODEopEqnbIAHOI8fO6T99m7Tsmqs2gkdujByJfkCbbfPSN4Wlqlb9TGnsuC0YgUgWkRBK7B9A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css" integrity="sha512-jU/7UFiaW5UBGODEopEqnbIAHOI8fO6T99m7Tsmqs2gkdujByJfkCbbfPSN4Wlqlb9TGnsuC0YgUgWkRBK7B9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <style>
             [x-cloak] {
@@ -79,11 +83,12 @@
                                     clip-rule="evenodd" />
                             </svg>
 
-                            <h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">Registration Success</h2>
+                            <h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">El inmueble se resgistro
+                                correctamente</h2>
 
                             <div class="text-gray-600 mb-8">
-                                Thank you. We have sent you an email to demo@demo.test. Please click the link in the
-                                message to activate your account.
+                                Muy pronto, nos pondremos en contacto contigo atraves de el siguiente correo electronico
+                                {{ Auth::user()->email }} y/o numero de contacto.
                             </div>
 
                             <button @click="step = 1"
@@ -129,6 +134,7 @@
 
                     <!-- Step Content -->
                     <div class="py-10">
+                        {!! Form::open(['route' => 'inmuebles.formulario.store', 'files' => true]) !!}
                         <div x-show.transition.in="step === 1">
                             <div class="mb-5 text-center">
                                 <div
@@ -137,86 +143,143 @@
                                         src="{{ Auth::user()->profile_photo_url }}" />
                                 </div>
 
-                                <label for="fileInput" type="button"
-                                    class="cursor-pointer inine-flex justify-between items-center focus:outline-none border py-2 px-4 rounded-lg shadow-sm text-left text-gray-600 bg-white hover:bg-gray-100 font-medium">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="inline-flex flex-shrink-0 w-6 h-6 -mt-1 mr-1" viewBox="0 0 24 24"
-                                        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <rect x="0" y="0" width="24" height="24"
-                                            stroke="none"></rect>
-                                        <path
-                                            d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2" />
-                                        <circle cx="12" cy="13" r="3" />
-                                    </svg>
-                                    Foto
-                                </label>
-
-                                <div class="mx-auto w-48 text-gray-500 text-xs text-center mt-1">Click to add profile
-                                    picture</div>
-
-                                <input name="photo" id="fileInput" accept="image/*" class="hidden" type="file"
-                                    @change="let file = document.getElementById('fileInput').files[0]; 
-								var reader = new FileReader();
-								reader.onload = (e) => image = e.target.result;
-								reader.readAsDataURL(file);">
                             </div>
 
                             <div class="mb-5">
-                                <label for="firstname" class="font-bold mb-1 text-gray-700 block">Nombre
-                                    completo</label>
+                                <label for="firstname" class="font-bold mb-1 text-gray-700 block">Nombre</label>
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                    placeholder="Nombre completo">
+                                    placeholder="Nombre" name="nombre">
+
+
+                                @error('nombre')
+                                    <span class="text-xs text-red-500">{{ $message }}</span>
+                                @enderror
                             </div>
+
+                            <div class="mb-5">
+                                <label for="firstname" class="font-bold mb-1 text-gray-700 block">Apellido</label>
+                                <input type="text"
+                                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                    placeholder="Apellido" name="apellido">
+
+                                @error('apellido')
+                                    <span class="text-xs text-red-500">{{ $message }}</span>
+                                @enderror
+
+
+
+                            </div>
+
 
                             <div class="mb-5">
                                 <label for="email" class="font-bold mb-1 text-gray-700 block">Correo</label>
                                 <input type="email"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                    placeholder="Correo electronico">
+                                    value="{{ auth()->user()->email }}" name="correo">
+
+                                @error('correo')
+                                    <span class="text-xs text-red-500">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="mb-5">
                                 <label for="firstname" class="font-bold mb-1 text-gray-700 block">Contacto</label>
                                 <input type="number"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                    placeholder="Numero de contacto">
+                                    placeholder="Numero de contacto" name="telefono">
+
+
+                                @error('contacto')
+                                    <span class="text-xs text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-5 hidden">
+                                <label for="firstname" class="font-bold mb-1 text-gray-700 block">Contacto</label>
+                                <input type="text"
+                                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                    placeholder="Numero de contacto" value="cedula" name="tipo_documento">
+
+
+                                @error('contacto')
+                                    <span class="text-xs text-red-500">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="mb-5 hidden">
+                                <label for="firstname" class="font-bold mb-1 text-gray-700 block">user_id</label>
+                                <input type="number"
+                                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                    value="{{ Auth()->user()->id }}" name="user_id">
                             </div>
 
                         </div>
-                        <div x-show.transition.in="step === 2" class="">
+                        <button @click="step === 2" x-show="step === 1" type="submit"
+                            class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Completar</button>
+                        {!! Form::close() !!}
+
+
+                        {!! Form::open(['route' => 'formulario.comodidades', 'files' => true]) !!}
+                        <div x-show.transition.in="step === 3" class="">
 
                             <div class="flex justify-center items-center">
                                 <div class="mb-5 px-2 w-1/2">
-                                    <label for="Municipio" class="font-bold mb-1 text-gray-700 block">Municipio</label>
+                                    <label for="Municipio"
+                                        class="font-bold mb-1 text-gray-700 block">Municipio</label>
                                     <input type="text"
                                         class=" px-4 w-full py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                        placeholder="Municipio">
+                                        placeholder="Municipio" name="municipio">
+
+                                    @error('municipio')
+                                        <span class="text-xs text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="mb-5 px-2 w-1/2 hidden">
+                                    <label for="Municipio"
+                                        class="font-bold mb-1 text-gray-700 block">Municipio</label>
+                                    @isset($inmueble->id)
+                                        <input type="text"
+                                            class=" px-4 w-full py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                            placeholder="Municipio" value="{{ $inmueble->id }}" name="inmueble_id">
+                                    @endisset
+
+                                    @error('municipio')
+                                        <span class="text-xs text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <div class="mb-5 w-1/2">
                                     <label for="Barrio" class="font-bold mb-1 text-gray-700 block">Barrio</label>
                                     <input type="text"
                                         class=" px-4 py-3 w-full rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                        placeholder="Barrio">
+                                        placeholder="Barrio" name="barrio">
+
+                                    @error('barrio')
+                                        <span class="text-xs text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="flex justify-center items-center">
-                                <div class="mb-5 px-2 w-1/2">
-                                    <label for="Municipio" class="font-bold mb-1 text-gray-700 block">Precio</label>
-                                    <input type="number"
-                                        class=" px-4 w-full py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                        placeholder="Precio">
-                                </div>
 
+                                <div class="mb-5 px-2 w-1/2">
+                                    <label for="firstname" class="font-bold mb-1 text-gray-700 block">Estrato</label>
+                                    <input type="number"
+                                        class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                        placeholder="Numero de estrato" name="estrato">
+
+                                    @error('estrato')
+                                        <span class="text-xs text-red-500">{{ $message }}</span>
+                                    @enderror
+                                </div>
 
                                 <div class=" px-2 w-1/2">
                                     <label for="password" class="font-bold mb-1 text-gray-700 block">Tipo de
                                         inmueble</label>
                                     <div class="relative inline-flex mb-4 w-full">
-                                        <select name="tipoin"
+                                        <select name="tipo_inmueble"
                                             class="px-4 w-full py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
                                             <option>Casa</option>
                                             <option>Apartamento</option>
@@ -226,7 +289,7 @@
                                             <option>Comercial (Local,Hotel,Oficina)</option>
                                             <option>Parqueadero</option>
                                         </select>
-                                        @error('tipoin')
+                                        @error('tipo')
                                             <span class="text-xs text-red-500">{{ $message }}</span>
                                         @enderror
                                     </div>
@@ -235,7 +298,8 @@
 
 
                                 <div class=" px-2 w-1/2">
-                                    <label for="password" class="font-bold mb-1 text-gray-700 block">Destinación</label>
+                                    <label for="password"
+                                        class="font-bold mb-1 text-gray-700 block">Destinación</label>
                                     <div class="relative inline-flex mb-4 w-full">
                                         <select name="destinacion"
                                             class="px-4 w-full py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium">
@@ -255,28 +319,107 @@
 
                             <div class="flex justify-center items-center">
                                 <div class="mb-5 px-2 w-1/2">
-                                    <label for="firstname" class="font-bold mb-1 text-gray-700 block">Habitaciónes</label>
+                                    <label for="firstname"
+                                        class="font-bold mb-1 text-gray-700 block">Habitaciónes</label>
                                     <input type="number"
                                         class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                        placeholder="Numero de habitaciónes">
+                                        placeholder="Numero de habitaciónes" name="habitaciones">
+
+                                    @error('habitaciones')
+                                        <span class="text-xs text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="mb-5 w-1/2">
                                     <label for="firstname" class="font-bold mb-1 text-gray-700 block">Baños</label>
                                     <input type="number"
                                         class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                        placeholder="Numero de baños">
+                                        placeholder="Numero de baños" name="banos">
+
+                                    @error('bano')
+                                        <span class="text-xs text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="mb-5 px-2 w-1/2">
-                                    <label for="firstname" class="font-bold mb-1 text-gray-700 block">Estrato</label>
+                                    <label for="firstname" class="font-bold mb-1 text-gray-700 block">Closets</label>
                                     <input type="number"
                                         class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                        placeholder="Numero de estrato">
+                                        placeholder="Numero de closets" name="closets">
+
+                                    @error('closets')
+                                        <span class="text-xs text-red-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                             </div>
 
+                            <button @click="step = 'complete'" x-show="step === 3" type="submit"
+                                class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Completar</button>
+
+
+
+                            {!! Form::close() !!}
+
+
+                            @isset($inmueble)
+
+                          {!!   Form::model($inmueble, ['route' => ['inmueble.files', $inmueble], 'files' => true, 'class' => 'dropzone  rounded-lg',
+                         'id' => 'my-awesome-dropzone',]) !!}
+
+
+                            <button @click="step = 'complete'" x-show="step === 3" type="submit"
+                                class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Completar</button>
+                            @endisset
+
+
+
+
+
+
+                        </div>
+                        {!! Form::close() !!} 
+
+                        {!! Form::open(['route' => 'formulario.inmueble', 'files' => true]) !!}
+                        <div x-show.transition.in="step === 2" class="">
+
+                            <div class="flex justify-center items-center">
+                                <div class="mb-5 px-2 w-1/2">
+                                    <label for="Municipio" class="font-bold mb-1 text-gray-700 block">Nombre</label>
+                                    <input type="text"
+                                        class=" px-4 w-full py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                        placeholder="Nombre" name="nombre" id="nombre">
+                                </div>
+
+                                <div class="mb-5 px-2 w-1/2">
+                                    <label for="Municipio" class="font-bold mb-1 text-gray-700 block">Precio</label>
+                                    <input type="number"
+                                        class=" px-4 w-full py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                        placeholder="Precio" name="precio">
+                                </div>
+
+                                <div class="mb-5 w-1/2 hidden">
+                                    <label for="Barrio" class="font-bold mb-1 text-gray-700 block">slug</label>
+                                    <input type="text"
+                                        class=" px-4 py-3 w-full rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                        placeholder="Slug" name="slug" id="slug">
+                                </div>
+                            </div>
+
+                            <div class="flex justify-center items-center">
+
+
+                                <div class="mb-5 hidden">
+                                    <label for="firstname" class="font-bold mb-1 text-gray-700 block">user_id</label>
+                                    <input type="number"
+                                        class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                                        value="{{ Auth()->user()->id }}" name="user_id">
+                                </div>
+
+
+                            </div>
+
                             <div class="mb-5">
-                                <label for="password" class="font-bold mb-1 text-gray-700 block">Acerca de este inmueble</label>
+                                <label for="password" class="font-bold mb-1 text-gray-700 block">Acerca de este
+                                    inmueble</label>
                                 <div class="text-gray-600 mt-2 mb-4">
                                     Crea una breve descripción que incluya los siguientes criterios.
 
@@ -291,9 +434,11 @@
                                 <div class="relative">
                                     <textarea
                                         class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                        rows="3" placeholder="Ejemplo('Se arrienda apartamento en sabaneta con 3 habitaciones, 3 closets, 2 baños cabinados, cocina integral, sala comedor, horno, balcon, sala comedor, red de gas ascensor & parqueadero')" name="descripcion"></textarea>
+                                        rows="3"
+                                        placeholder="Ejemplo('Se arrienda apartamento en sabaneta con 3 habitaciones, 3 closets, 2 baños cabinados, cocina integral, sala comedor, horno, balcon, sala comedor, red de gas ascensor & parqueadero')"
+                                        name="descripcion"></textarea>
                                     @error('descripcion')
-                                    <span class="text-xs text-red-500">{{ $message }}</span>
+                                        <span class="text-xs text-red-500">{{ $message }}</span>
                                     @enderror
 
                                 </div>
@@ -304,41 +449,12 @@
                                         class="text-blue-500">Robin Williams</a>.</p>
                             </div>
 
+                            <button @click="step = 'complete'" x-show="step === 2" type="submit"
+                                class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Completar</button>
+
                         </div>
+                        {!! Form::close() !!}
 
-                        <div x-show.transition.in="step === 3">
-                            <div class="mb-5">
-                                <h1 class="font-bold">En Desarrollo</h1>
-                                {{-- <label for="email" class="font-bold mb-1 text-gray-700 block">Gender</label>
-
-                                <div class="flex">
-                                    <label
-                                        class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm mr-4">
-                                        <div class="text-pink-600 mr-3">
-                                            <input type="radio" x-model="gender" value="Male"
-                                                class="form-radio focus:outline-none focus:shadow-outline" />
-                                        </div>
-                                        <div class="select-none text-gray-700">Male</div>
-                                    </label>
-
-                                    <label
-                                        class="flex justify-start items-center text-truncate rounded-lg bg-white pl-4 pr-6 py-3 shadow-sm">
-                                        <div class="text-pink-600 mr-3">
-                                            <input type="radio" x-model="gender" value="Female"
-                                                class="form-radio focus:outline-none focus:shadow-outline" />
-                                        </div>
-                                        <div class="select-none text-gray-700">Female</div>
-                                    </label>
-                                </div> --}}
-                            </div>
-
-                            {{-- <div class="mb-5">
-                                <label for="profession" class="font-bold mb-1 text-gray-700 block">Profession</label>
-                                <input type="profession"
-                                    class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                    placeholder="eg. Web Developer">
-                            </div> --}}
-                        </div>
                     </div>
                     <!-- / Step Content -->
                 </div>
@@ -357,7 +473,7 @@
                             <button x-show="step < 3" @click="step++"
                                 class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Siguiente</button>
 
-                            <button @click="step = 'complete'" x-show="step === 3"
+                            <button @click="step = 'complete'" x-show="step === 3" type="submit"
                                 class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Completar</button>
                         </div>
                     </div>
@@ -365,6 +481,52 @@
             </div>
             <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
         </div>
+
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"
+            integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.js" integrity="sha512-llCHNP2CQS+o3EUK2QFehPlOngm8Oa7vkvdUpEFN71dVOf3yAj9yMoPdS5aYRTy8AEdVtqUBIsVThzUSggT0LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        {{-- script de el slug automatico --}}
+        <script>
+            //Slug automático
+            document.getElementById("nombre").addEventListener('keyup', slugChange);
+
+            function slugChange() {
+
+                title = document.getElementById("nombre").value;
+                document.getElementById("slug").value = slug(title);
+
+            }
+
+            function slug(str) {
+                var $slug = '';
+                var trimmed = str.trim(str);
+                $slug = trimmed.replace(/[^a-z0-9-]/gi, '-').
+                replace(/-+/g, '-').
+                replace(/^-|-$/g, '');
+                return $slug.toLowerCase();
+            }
+        </script>
+        {{-- script de configuracion de dropzone --}}
+
+        <script>
+            Dropzone.options.myGreatDropzone = {
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                acceptedFiles: 'image/*',
+                dictDefaultMessage: "Arrastre su imagen o haga click en el recuadro",
+                paramName: "file", // The name that will be used to transfer the file
+                maxFilesize: 2, // MB
+            };
+
+        </script>
+
+        
+
+
 
         <script>
             function app() {
