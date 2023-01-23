@@ -23,6 +23,7 @@ $nav_links = [
         'active' => request()->routeIs('inmuebles.publicar')
 
     ],
+
     [
         //nombre de el link
         'name' => 'Buscar Inmueble',
@@ -36,6 +37,16 @@ $nav_links = [
     ],
     [
         //nombre de el link
+        'name' => 'Ayuda',
+
+        //nombre de la ruta
+        'route' => route('contacto.ayuda'),
+
+        //nombre de la ruta activa
+        'active' => request()->routeIs('contacto.ayuda')
+    ],
+   /* [
+        //nombre de el link
         'name' => 'Calculadora de Arrendamiento',
 
         //nombre de la ruta
@@ -44,7 +55,7 @@ $nav_links = [
         //nombre de la ruta activa
         'active' => request()->routeIs('calculadora.calcular')
 
-    ],
+    ],*/
     // [
     //     //nombre de el link
     //     'name' => 'Formularios',
@@ -56,16 +67,7 @@ $nav_links = [
     //     'active' => false
 
     // ],
-    [
-        //nombre de el link
-        'name' => 'Ayuda',
 
-        //nombre de la ruta
-        'route' => route('contacto.ayuda'),
-
-        //nombre de la ruta activa
-        'active' => request()->routeIs('contacto.ayuda')
-    ],
     // [
     //     //nombre de el link
     //     'name' => 'Nosotros',
@@ -100,6 +102,9 @@ $nav_links = [
                      {{ $nav_link['name'] }}
                   </x-jet-nav-link>
                     @endforeach
+                    <x-jet-nav-link href="https://zonaclientes.softinm.com/somospropiedad/login" style="text-decoration: none">
+                      Zona  Clientes
+                     </x-jet-nav-link>
                 </div>
             </div>
 

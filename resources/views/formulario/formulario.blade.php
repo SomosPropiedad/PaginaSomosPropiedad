@@ -9,7 +9,9 @@
         {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css"
             integrity="sha512-jU/7UFiaW5UBGODEopEqnbIAHOI8fO6T99m7Tsmqs2gkdujByJfkCbbfPSN4Wlqlb9TGnsuC0YgUgWkRBK7B9A=="
             crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css" integrity="sha512-jU/7UFiaW5UBGODEopEqnbIAHOI8fO6T99m7Tsmqs2gkdujByJfkCbbfPSN4Wlqlb9TGnsuC0YgUgWkRBK7B9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.css"
+            integrity="sha512-jU/7UFiaW5UBGODEopEqnbIAHOI8fO6T99m7Tsmqs2gkdujByJfkCbbfPSN4Wlqlb9TGnsuC0YgUgWkRBK7B9A=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <style>
             [x-cloak] {
@@ -134,7 +136,7 @@
 
                     <!-- Step Content -->
                     <div class="py-10">
-                        {!! Form::open(['route' => 'inmuebles.formulario.store', 'files' => true]) !!}
+                        {!! Form::open(['route' => 'inmuebles.formulario.store', 'files' => true, 'id' => 'form']) !!}
                         <div x-show.transition.in="step === 1">
                             <div class="mb-5 text-center">
                                 <div
@@ -147,7 +149,7 @@
 
                             <div class="mb-5">
                                 <label for="firstname" class="font-bold mb-1 text-gray-700 block">Nombre</label>
-                                <input type="text"
+                                <input type="text" x-model="form.name"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                                     placeholder="Nombre" name="nombre">
 
@@ -214,13 +216,19 @@
                                     value="{{ Auth()->user()->id }}" name="user_id">
                             </div>
 
+                            <div class="max-w-3xl mx-auto px-4">
+                                <div class="flex justify-between">
+                                    <div class="w-full text-right">
+                                        <button x-show="step < 3" @click="step++" type="submit"
+                                            class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Siguiente</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <button @click="step === 2" x-show="step === 1" type="submit"
-                            class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Completar</button>
                         {!! Form::close() !!}
 
 
-                        {!! Form::open(['route' => 'formulario.comodidades', 'files' => true]) !!}
+                        {!! Form::open(['route' => 'formulario.comodidades', 'files' => true, 'id' => 'comodidades']) !!}
                         <div x-show.transition.in="step === 3" class="">
 
                             <div class="flex justify-center items-center">
@@ -352,33 +360,47 @@
 
                             </div>
 
-                            <button @click="step = 'complete'" x-show="step === 3" type="submit"
-                                class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Completar</button>
+
+
+                            <div class="max-w-3xl mx-auto px-4 hidden">
+                                <div class="flex justify-between">
+                                    <div class="w-full text-right">
+                                        <button @click="step = 'complete'" x-show="step === 3" type="submit" onclick="pulsar"
+                                    class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Completar</button>
+                                    </div>
+                                </div>
+                            </div>
+
 
 
 
                             {!! Form::close() !!}
 
 
+
+
+
                             @isset($inmueble)
+                                {!! Form::model($inmueble, [
+                                    'route' => ['inmueble.files', $inmueble],
+                                    'files' => true,
+                                    'class' => 'dropzone  rounded-lg',
+                                    'id' => 'my-awesome-dropzone',
+                                    'name' => 'img',
+                                ]) !!}
 
-                          {!!   Form::model($inmueble, ['route' => ['inmueble.files', $inmueble], 'files' => true, 'class' => 'dropzone  rounded-lg',
-                         'id' => 'my-awesome-dropzone',]) !!}
 
+                                <button @click="step = 'complete'" x-show="step === 3"  
+                                    class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Completar</button>
 
-                            <button @click="step = 'complete'" x-show="step === 3" type="submit"
-                                class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Completar</button>
+                                {!! Form::close() !!}
                             @endisset
 
 
-
-
-
-
                         </div>
-                        {!! Form::close() !!} 
 
-                        {!! Form::open(['route' => 'formulario.inmueble', 'files' => true]) !!}
+
+                        {!! Form::open(['route' => 'formulario.inmueble', 'files' => true, 'id' => 'inmueble']) !!}
                         <div x-show.transition.in="step === 2" class="">
 
                             <div class="flex justify-center items-center">
@@ -449,9 +471,14 @@
                                         class="text-blue-500">Robin Williams</a>.</p>
                             </div>
 
-                            <button @click="step = 'complete'" x-show="step === 2" type="submit"
-                                class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Completar</button>
-
+                            <div class="max-w-3xl mx-auto px-4">
+                                <div class="flex justify-between">
+                                    <div class="w-full text-right">
+                                        <button x-show="step < 3" @click="step++" type="submit"
+                                            class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Siguiente</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         {!! Form::close() !!}
 
@@ -461,7 +488,7 @@
             </div>
 
             <!-- Bottom Navigation -->
-            <div class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md" x-show="step != 'complete'">
+             <div class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md" x-show="step != 'complete'">
                 <div class="max-w-3xl mx-auto px-4">
                     <div class="flex justify-between">
                         <div class="w-1/2">
@@ -478,7 +505,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
             <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
         </div>
 
@@ -486,7 +513,10 @@
             integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.js" integrity="sha512-llCHNP2CQS+o3EUK2QFehPlOngm8Oa7vkvdUpEFN71dVOf3yAj9yMoPdS5aYRTy8AEdVtqUBIsVThzUSggT0LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+          <script src="/js/form.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/dropzone.min.js"
+            integrity="sha512-llCHNP2CQS+o3EUK2QFehPlOngm8Oa7vkvdUpEFN71dVOf3yAj9yMoPdS5aYRTy8AEdVtqUBIsVThzUSggT0LQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         {{-- script de el slug automatico --}}
         <script>
@@ -521,11 +551,12 @@
                 paramName: "file", // The name that will be used to transfer the file
                 maxFilesize: 2, // MB
             };
-
         </script>
 
-        
 
+        <script>
+
+        </script>
 
 
         <script>

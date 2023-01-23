@@ -57,7 +57,7 @@ class FormularioController extends Controller
 
          $propietario = Propietario::create($request->all());
 
-         return view('livewire.inmueble-component');
+        // return view('formulario.formulario');
 
         //return $request->all();
     }
@@ -72,16 +72,22 @@ class FormularioController extends Controller
         //     'descripcion' => 'required',
         // ]);
 
-         $inmueble = Inmueble::create($request->all());
+         $inmueble_img = Inmueble::create($request->all());
+
 
          //return view('formulario.formulario');
 
-         return redirect('livewire.comodidades-component', compact('inmueble'));
+         
 
 
         //return $request->all();
 
        
+    }
+
+    public function data($inmueble)
+    {
+        return view('formulario.formulario', compact('inmueble'));
     }
 
     // metodo para subir las comodidades
@@ -100,7 +106,7 @@ class FormularioController extends Controller
 
          $comodidades = Comodidades::create($request->all());
 
-         return redirect('livewire.comodidades-component');
+         //return redirect('livewire.comodidades-component');
 
 
         //return $request->all();
@@ -110,11 +116,18 @@ class FormularioController extends Controller
     //metodo para subir las imagenes del inmueble
     public function files(Inmueble $inmueble, Request $request)
     {
+
+        
+        if (!is_string($request->file('file'))) {
+            $request = (string) $request;
+        }
+
             $url = Storage::put('public/inmueble', $request->file('file'));
 
             $inmueble->imagen()->create([
                 'url' => $url
             ]);
+
 
         //return $request->all();
 
