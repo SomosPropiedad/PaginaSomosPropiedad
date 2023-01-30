@@ -93,7 +93,7 @@
 
                 <!-- Card 1 -->
                 <div class="col-span-2 transition hover:-translate-y-1 hover:scale-110">
-                    <a href="{{route('inmuebles.index')}}">
+                    <a href="{{ route('inmuebles.index') }}">
                         <img src="https://cdn.pixabay.com/photo/2016/08/26/15/06/home-1622401_960_720.jpg"
                             class="rounded-xl brightness-75" />
                     </a>
@@ -104,7 +104,7 @@
 
                 <!-- Card 2 -->
                 <div class="col-span-2 transition hover:-translate-y-1 hover:scale-110 ">
-                    <a href="{{route('inmuebles.index')}}">
+                    <a href="{{ route('inmuebles.index') }}">
                         <img src="https://images.pexels.com/photos/6874916/pexels-photo-6874916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                             class="rounded-xl brightness-75" />
                     </a>
@@ -115,7 +115,7 @@
 
                 <!-- Card 3 -->
                 <div class="col-span-2 transition hover:-translate-y-1 hover:scale-110">
-                    <a href="{{route('inmuebles.index')}}">
+                    <a href="{{ route('inmuebles.index') }}">
                         <img src="https://cdn.pixabay.com/photo/2018/01/20/07/19/tallest-3093955_960_720.jpg"
                             class="rounded-xl brightness-75 shadow" />
                     </a>
@@ -126,7 +126,7 @@
 
                 <!-- Card 4 -->
                 <div class="col-span-2 transition hover:-translate-y-1 hover:scale-110">
-                    <a href="{{route('inmuebles.index')}}">
+                    <a href="{{ route('inmuebles.index') }}">
                         <img src="https://cdn.pixabay.com/photo/2021/11/09/20/58/home-6782365_960_720.jpg"
                             class="rounded-xl brightness-75" />
                     </a>
@@ -137,7 +137,7 @@
 
                 <!-- Card 5 -->
                 <div class="col-span-2 transition hover:-translate-y-1 hover:scale-110">
-                    <a href="{{route('inmuebles.index')}}">
+                    <a href="{{ route('inmuebles.index') }}">
                         <img src="https://cdn.pixabay.com/photo/2016/01/21/23/48/paris-1155008_960_720.jpg"
                             class="rounded-xl brightness-75" />
                     </a>
@@ -147,7 +147,7 @@
                 </div>
 
                 <div class="col-span-2 transition hover:-translate-y-1 hover:scale-110">
-                    <a href="{{route('inmuebles.index')}}">
+                    <a href="{{ route('inmuebles.index') }}">
                         <img src="https://cdn.pixabay.com/photo/2016/02/05/16/19/offices-1181385_960_720.jpg"
                             class="rounded-xl brightness-75" />
                     </a>
@@ -171,6 +171,25 @@
                 </a>
             </div>
         </div>
+
+
+
+
+
+        {{-- <div class="fixed bottom-16 right-0 h-1/4 w-1/4 rounded-t-full rounded-full transition-all translate-y-full hover:translate-y-0 bg-pink-600">
+            <a href="https://www.psepagos.co/PSEHostingUI/ShowTicketOffice.aspx?ID=5391" class="rounded-full" >
+                <img src="http://www.somospropiedad.com/wp-content/uploads/2022/07/BotonPSE-PEQUENA-1024x791.png" 
+                    alt="pse">
+            </a>
+        </div> --}}
+
+        {{-- <div class="flex  right-8 bg-gray-100 p-2 w-full justify-center space-x-10">
+            <button href="https://www.psepagos.co/PSEHostingUI/ShowTicketOffice.aspx?ID=5391"
+                class="min-w-auto w-14 h-14 bg-red-300 p-2 rounded-full hover:bg-red-500 text-white font-semibold transition-rotation duration-300 hover:-rotate-45 ease-in-out">
+                <img src="http://www.somospropiedad.com/wp-content/uploads/2022/07/BotonPSE-PEQUENA-1024x791.png"
+                    alt="pse">
+            </button>
+        </div> --}}
 
 
 

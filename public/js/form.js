@@ -1,16 +1,16 @@
-// document.getElementById("form").addEventListener("submit", function(e) {
-//     e.preventDefault();
-//     var form = document.getElementById("form");
-//     var formData = new FormData(form);
+ document.getElementById("form").addEventListener("submit", function(e) {
+    e.preventDefault();
+     var form = document.getElementById("form");
+     var formData = new FormData(form);
 
-//     axios.post('publicar_formulario', formData)
-//         .then(function(response) {
-//             //console.log(response.data);
-//         })
-//         .catch(function(error) {
-//             console.log(error);
-//         });
-// });
+     axios.post('publicar_formulario', formData)
+         .then(function(response) {
+             //console.log(response.data);
+         })
+         .catch(function(error) {
+             console.log(error);
+         });
+ });
 
 
 document.getElementById("inmueble").addEventListener("submit", function(e) {
@@ -33,19 +33,21 @@ document.getElementById("inmueble").addEventListener("submit", function(e) {
 
 
 
-// document.getElementById("comodidades").addEventListener("submit", function(e) {
-//     e.preventDefault();
-//     var form = document.getElementById("comodidades");
-//     var formData = new FormData(form);
+ document.getElementById("comodidades").addEventListener("submit", function(e) {
+     e.preventDefault();
+     var form = document.getElementById("comodidades");
+     var formData = new FormData(form);
 
-//     axios.post('formulario_create', formData)
-//         .then(function(response) {
-//             //console.log(response.data);
-//         })
-//         .catch(function(error) {
-//             console.log(error);
-//         });
-// });
+
+
+     axios.post('formulario_create', formData)
+         .then(function(response) {
+             //console.log(response.data);
+         })
+         .catch(function(error) {
+             console.log(error);
+         });
+ });
 
 
 // document.getElementById("my-awesome-dropzone").addEventListener("submit", function(e) {

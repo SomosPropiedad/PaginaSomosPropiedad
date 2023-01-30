@@ -43,7 +43,7 @@ Route::post('formulario_create', [FormulariosFormularioController::class,'comodi
 
 Route::post('form_create', [FormulariosFormularioController::class,'inmueble'])->name('formulario.inmueble');
 
-Route::post('inmueble/{inmueble}/files', [FormulariosFormularioController::class,'files'])->name('inmueble.files');
+Route::post('inmueble/images', [FormulariosFormularioController::class,'files'])->name('inmueble.files');
 
 
 
