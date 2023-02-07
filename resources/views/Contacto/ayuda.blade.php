@@ -42,7 +42,7 @@
                                     <div class="item px-6 py-6" x-data="{ isOpen: false }">
                                         <a href="#" class="flex items-center justify-between"
                                             @click.prevent="isOpen = true">
-                                            <h4 :class="{ 'text-pink-400 font-medium': isOpen == true }"> ¿Pregunta frecuente?
+                                            <h4 :class="{ 'text-pink-400 font-medium': isOpen == true }"> ¿Cómo describen su proceso de búsqueda de propiedades y negociación de contratos?
                                             </h4>
                                             <svg :class="{ 'transform rotate-180': isOpen == true }"
                                                 class="w-5 h-5 text-gray-500" fill="none" stroke-linecap="round"
@@ -66,7 +66,7 @@
                                     <div class="item px-6 py-6" x-data="{ isOpen: false }">
                                         <a href="#" class="flex items-center justify-between"
                                             @click.prevent="isOpen = true">
-                                            <h4 :class="{ 'text-pink-400 font-medium': isOpen == true }"> ¿Pregunta frecuente?
+                                            <h4 :class="{ 'text-pink-400 font-medium': isOpen == true }"> ¿Qué servicios adicionales ofrecen, como asesoramiento financiero o inspecciones de la propiedad?
                                             </h4>
                                             <svg :class="{ 'transform rotate-180': isOpen == true }"
                                                 class="w-5 h-5 text-gray-500" fill="none" stroke-linecap="round"
@@ -90,7 +90,7 @@
                                     <div class="item px-6 py-6" x-data="{ isOpen: false }">
                                         <a href="#" class="flex items-center justify-between"
                                             @click.prevent="isOpen = true">
-                                            <h4 :class="{ 'text-pink-400 font-medium': isOpen == true }"> ¿Pregunta frecuente?
+                                            <h4 :class="{ 'text-pink-400 font-medium': isOpen == true }"> ¿Cuál es su política de cancelación y reembolso?
                                             </h4>
                                             <svg :class="{ 'transform rotate-180': isOpen == true }"
                                                 class="w-5 h-5 text-gray-500" fill="none" stroke-linecap="round"
@@ -114,7 +114,7 @@
                                     <div class="item px-6 py-6" x-data="{ isOpen: false }">
                                         <a href="#" class="flex items-center justify-between"
                                             @click.prevent="isOpen = true">
-                                            <h4 :class="{ 'text-pink-400 font-medium': isOpen == true }"> ¿Pregunta frecuente?
+                                            <h4 :class="{ 'text-pink-400 font-medium': isOpen == true }"> ¿Cómo manejan la privacidad y la seguridad de la información del cliente?
                                             </h4>
                                             <svg :class="{ 'transform rotate-180': isOpen == true }"
                                                 class="w-5 h-5 text-gray-500" fill="none" stroke-linecap="round"
@@ -138,7 +138,7 @@
                                     <div class="item px-6 py-6" x-data="{ isOpen: false }">
                                         <a href="#" class="flex items-center justify-between"
                                             @click.prevent="isOpen = true">
-                                            <h4 :class="{ 'text-pink-400 font-medium': isOpen == true }"> ¿Pregunta frecuente?
+                                            <h4 :class="{ 'text-pink-400 font-medium': isOpen == true }"> ¿Tienen un equipo de apoyo en caso de emergencia o si surgen problemas con la propiedad?
                                             </h4>
                                             <svg :class="{ 'transform rotate-180': isOpen == true }"
                                                 class="w-5 h-5 text-gray-500" fill="none" stroke-linecap="round"

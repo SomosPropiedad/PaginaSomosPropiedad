@@ -102,7 +102,7 @@ $nav_links = [
                      {{ $nav_link['name'] }}
                   </x-jet-nav-link>
                     @endforeach
-                    <x-jet-nav-link href="https://zonaclientes.softinm.com/somospropiedad/login" style="text-decoration: none">
+                    <x-jet-nav-link href="https://zonaclientes.softinm.com/somospropiedad/login" target="_blank" style="text-decoration: none">
                       Zona  Clientes
                      </x-jet-nav-link>
                 </div>

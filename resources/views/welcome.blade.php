@@ -176,6 +176,7 @@
 
 
 
+
         {{-- <div class="fixed bottom-16 right-0 h-1/4 w-1/4 rounded-t-full rounded-full transition-all translate-y-full hover:translate-y-0 bg-pink-600">
             <a href="https://www.psepagos.co/PSEHostingUI/ShowTicketOffice.aspx?ID=5391" class="rounded-full" >
                 <img src="http://www.somospropiedad.com/wp-content/uploads/2022/07/BotonPSE-PEQUENA-1024x791.png" 
