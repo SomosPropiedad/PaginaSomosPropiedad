@@ -23,9 +23,9 @@
         <!-- End Header -->
         <!-- Start Section -->
         <section>
-            <div class="container">
+            <div class="cont">
                 <div class="overlay"></div>
-                <div class="text">
+                <div class="text w-full text-xs sm:w-1/2 ">
                     <h1>Hola,<span class="s-1"></span> </h1>
 
                     <h1> Bienvenido a <span class="s-2"></span></h1>
@@ -89,7 +89,7 @@
         <!-- component -->
         <div class=" flex items-center justify-center">
 
-            <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-6 gap-x-4 gap-y-1 max-w-2xl">
+            <div class="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-6 lg:grid-cols-6 gap-x-4 gap-y-1 max-w-2xl ">
 
                 <!-- Card 1 -->
                 <div class="col-span-2 transition hover:-translate-y-1 hover:scale-110">
@@ -116,7 +116,7 @@
                 <!-- Card 3 -->
                 <div class="col-span-2 transition hover:-translate-y-1 hover:scale-110">
                     <a href="{{ route('inmuebles.index') }}">
-                        <img src="https://cdn.pixabay.com/photo/2018/01/20/07/19/tallest-3093955_960_720.jpg"
+                        <img src="/css/Home/img/pexels-luis-quintero-2091634.jpg"
                             class="rounded-xl brightness-75 shadow" />
                     </a>
                     <p
@@ -127,8 +127,7 @@
                 <!-- Card 4 -->
                 <div class="col-span-2 transition hover:-translate-y-1 hover:scale-110">
                     <a href="{{ route('inmuebles.index') }}">
-                        <img src="https://cdn.pixabay.com/photo/2021/11/09/20/58/home-6782365_960_720.jpg"
-                            class="rounded-xl brightness-75" />
+                        <img src="/css/Home/img/loft.jpg" class="rounded-xl brightness-75" />
                     </a>
                     <p
                         class="text-xs -translate-y-6 text-white font-semibold sm:-translate-y-8 sm:text-base translate-x-3">
@@ -138,8 +137,7 @@
                 <!-- Card 5 -->
                 <div class="col-span-2 transition hover:-translate-y-1 hover:scale-110">
                     <a href="{{ route('inmuebles.index') }}">
-                        <img src="https://cdn.pixabay.com/photo/2016/01/21/23/48/paris-1155008_960_720.jpg"
-                            class="rounded-xl brightness-75" />
+                        <img src="/css/Home/img/store2.jpg" class="rounded-xl brightness-75" />
                     </a>
                     <p
                         class="text-xs -translate-y-6 text-white font-semibold sm:-translate-y-8 sm:text-base translate-x-3">
@@ -148,8 +146,7 @@
 
                 <div class="col-span-2 transition hover:-translate-y-1 hover:scale-110">
                     <a href="{{ route('inmuebles.index') }}">
-                        <img src="https://cdn.pixabay.com/photo/2016/02/05/16/19/offices-1181385_960_720.jpg"
-                            class="rounded-xl brightness-75" />
+                        <img src="/css/Home/img/office.jpg" class="rounded-xl brightness-75" />
                     </a>
                     <p
                         class="text-xs -translate-y-6 text-white font-semibold sm:-translate-y-8 sm:text-base translate-x-3">
@@ -223,7 +220,8 @@
                 <h1>Mas
                     <span>Populares</span>
                 </h1>
-                <p class="text-center block w-2/5  m-auto leading-loose text-sm text-slate-500">Somos propiedad es una
+                <p class="text-center block w-full sm:w-2/5  m-auto leading-loose text-sm text-slate-500">Somos
+                    propiedad es una
                     empresa completa con diferentes servicios inmobiliarios.
                     Con la confianza de clientes como usted durante más de dos décadas,
                     ofrecemos alquiler y venta de propiedades.
@@ -235,27 +233,32 @@
 
         <!-- End projects -->
         <!-- Start About -->
-        <div class="about sm:text-center sm:">
+        <div class="sm:text-center py-10">
 
-            <div class="">
-                <div class="col-1pic">
-                    <img src="/css/Home/img/member.png" alt="">
-                </div>
-            </div>
-            <div class="col-2">
-                <h1 class="">SOBRE
-                    <span>NOSOTROS</span>
+            <div class="text-center items-center justify-center">
+                <h1 class="text">SOBRE
+                    <span class=" text-pink-500">NOSOTROS</span>
                 </h1>
-
                 <h3>Somos Propiedad</h3>
-                <p> Mejorar la calidad de vida de quienes requieren un servicio inmobiliario,
+
+                <p class="text-center block w-full sm:w-2/5  m-auto leading-loose text-sm text-slate-500"> Mejorar la calidad de vida de quienes requieren un servicio inmobiliario,
                     mediante la asesoría de nuestro equipo de trabajo, dentro de un marco de responsabilidad,
                     seriedad y compromiso con nuestros aliados,
                     apoyado en la calidad humana y en la atención oportuna y competente.</p>
 
+                <div class="justify-center items-center py-5">
+                    <div class="flex justify-center items-center ">
+                        <img src="/css/Home/img/member.png" alt="" class=" ">
+                    </div>
+                </div>
 
-                <button><a href="#">SABER MAS</a></button>
 
+
+
+                   
+                <button
+                    class="border-2 bg-gradient-to-r border-pink-400  hover:from-indigo-400 hover:to-pink-400 hover:scale-105 font-bold rounded-lg text-xl px-4 py-2.5 text-center inline-flex r">Saber mas </button>
+    
             </div>
 
         </div>
@@ -263,7 +266,7 @@
         <!-- Start Contact -->
         <div class="contact">
 
-            <div class="container">
+            <div class="cont  w-full">
                 <div class="contact-heading">
                     <h1>CONTACTO
 
@@ -272,8 +275,8 @@
                     </h1>
 
                 </div>
-                <div class="boxs">
-                    <div class="box">
+                <div class="boxs  w-full">
+                    <div class="box w-full">
                         <img src="/css/Home/img/phone.png" alt="">
                         <div class="text">
                             <h4>Telefono</h4>
@@ -281,16 +284,16 @@
                                 604 444 73 62 Ext 103</span>
                         </div>
                     </div>
-                    <div class="box">
+                    <div class="box w-full">
                         <img src="/css/Home/img/new-post.png" alt="">
                         <div class="text">
                             <h4>Correo</h4>
-                            <span>asesor2caldas@somospropiedad.com<br>
+                            <span class="">
                                 servicios@somospropiedad.com
                             </span>
                         </div>
                     </div>
-                    <div class="box">
+                    <div class="box w-full">
                         <img src="/css/Home/img/map-marker.png" alt="">
                         <div class="text">
                             <h4>Direccion</h4>

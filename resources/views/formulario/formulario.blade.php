@@ -76,7 +76,7 @@
         <div x-data="app()" x-cloak>
             <div class="max-w-3xl mx-auto px-4 py-10">
 
-                <div x-show.transition="step === 'complete'">
+                 <div x-show.transition="step === 'complete'">
                     <div class="bg-white rounded-lg p-10 flex items-center shadow justify-between">
                         <div>
                             <svg class="mb-4 h-20 w-20 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">
@@ -93,12 +93,14 @@
                                 {{ Auth::user()->email }} y/o numero de contacto.
                             </div>
 
-                            <a href="{{route('home')}}"
+                            <a href="{{ route('home') }}"
                                 class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border">Back
                                 Volver</a>
                         </div>
                     </div>
-                </div>
+                </div> 
+
+
 
                 <div x-show.transition="step != 'complete'">
                     <!-- Top Navigation -->
@@ -147,13 +149,11 @@
 
                             </div>
 
-                            <div class="mb-5">
+                            <div class="mb-5" x-data="{ field: '' }">
                                 <label for="firstname" class="font-bold mb-1 text-gray-700 block">Nombre</label>
                                 <input type="text" x-model="form.name"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                    placeholder="Nombre" name="nombre">
-
-
+                                    placeholder="Nombre" name="nombre" id="nombre">
                                 @error('nombre')
                                     <span class="text-xs text-red-500">{{ $message }}</span>
                                 @enderror
@@ -163,7 +163,7 @@
                                 <label for="firstname" class="font-bold mb-1 text-gray-700 block">Apellido</label>
                                 <input type="text"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                    placeholder="Apellido" name="apellido">
+                                    placeholder="Apellido" name="apellido" id="apellido">
 
                                 @error('apellido')
                                     <span class="text-xs text-red-500">{{ $message }}</span>
@@ -178,7 +178,7 @@
                                 <label for="email" class="font-bold mb-1 text-gray-700 block">Correo</label>
                                 <input type="email"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                    value="{{ auth()->user()->email }}" name="correo">
+                                    value="{{ auth()->user()->email }}" name="correo" id="correo">
 
                                 @error('correo')
                                     <span class="text-xs text-red-500">{{ $message }}</span>
@@ -189,7 +189,7 @@
                                 <label for="firstname" class="font-bold mb-1 text-gray-700 block">Contacto</label>
                                 <input type="number"
                                     class="w-full px-4 py-3 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
-                                    placeholder="Numero de contacto" name="telefono">
+                                    placeholder="Numero de contacto" name="telefono" id="telefono">
 
 
                                 @error('contacto')
@@ -216,14 +216,19 @@
                                     value="{{ Auth()->user()->id }}" name="user_id">
                             </div>
 
+
+
+
                             <div class="max-w-3xl mx-auto px-4">
                                 <div class="flex justify-between">
                                     <div class="w-full text-right">
-                                        <button x-show="step < 3" @click="step++" type="submit"
+                                        <button x-show="step < 3" @click="step++" type="submit" id="enviar"
                                             class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium">Siguiente</button>
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
                         {!! Form::close() !!}
 
@@ -361,7 +366,7 @@
                                 'files' => true,
                                 'id' => 'my-dropzone',
                                 'class' => 'dropzone  rounded-lg',
-                                'enctype' => 'multipart/form-data'
+                                'enctype' => 'multipart/form-data',
                             ]) !!}
                             @csrf
 
@@ -507,7 +512,7 @@
             integrity="sha512-llCHNP2CQS+o3EUK2QFehPlOngm8Oa7vkvdUpEFN71dVOf3yAj9yMoPdS5aYRTy8AEdVtqUBIsVThzUSggT0LQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 
-            <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+        <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
         {{-- script de el slug automatico --}}
@@ -536,9 +541,9 @@
         <script>
             Dropzone.options.myDropzone = {
                 headers: {
-                'X-CSRF-TOKEN': "{{csrf_token()}}"
-                
-              },
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+
+                },
                 acceptedFiles: 'image/*',
                 dictDefaultMessage: "Click para agregar fotos del inmueble",
                 paramName: "file", // The name that will be used to transfer the file

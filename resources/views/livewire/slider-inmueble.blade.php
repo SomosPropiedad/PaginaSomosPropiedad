@@ -80,7 +80,7 @@
                                 </h2>
                                 <p class="mt-2 text-sm text-gray-800 line-clamp-1"
                                     title="{{ Str::limit($inmueble['resumen'], 70) }}">
-                                    {{ Str::limit($inmueble['resumen'], 40) }}
+                                    {{ Str::limit($inmueble['resumen'], 25) }}
                                 </p>
                             </div>
 
@@ -93,7 +93,7 @@
                                         </path>
                                     </svg>
                                     <span class="mt-2 xl:mt-0">
-                                        {{ Str::limit($inmueble['clase'], 11) }}
+                                        {{ Str::limit($inmueble['clase'], 5) }}
                                     </span>
                                 </p>
                                 <p class="inline-flex flex-col xl:flex-row xl:items-center text-gray-800">

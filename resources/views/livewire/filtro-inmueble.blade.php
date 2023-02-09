@@ -207,7 +207,7 @@
                 </div>
             </div>
 
-            <div class="">
+            {{-- <div class="">
 
                 <button
                     class=" bg-gradient-to-r from-indigo-400 to-pink-400 hover:scale-105 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
@@ -223,7 +223,7 @@
    
                     </ul>
                 </div>
-            </div>
+            </div> --}}
 
 
 

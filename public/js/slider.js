@@ -4,11 +4,12 @@ window.addEventListener('load', function(){
         slidesToScroll: 5,
         dots: '.dots',
         rewind: true,
-        responsive: [{
+        responsive: [
+            {
                 breakpoint: 1200,
                 settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 5
+                    slidesToShow: 4,
+                    slidesToScroll: 4
    
                 }
             },
@@ -108,7 +109,7 @@ window.addEventListener('load', function(){
     slider.scrollItem(actual);
     function deslizar(milisegs){
         timeout = setTimeout(()=>{
-            if(actual<conteo-5) actual++;
+            if(actual<conteo-4) actual++;
             else actual = 0;
             slider.scrollItem(actual);
         }, milisegs);

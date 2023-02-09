@@ -82,7 +82,7 @@
                                     </h2>
                                     <p class="mt-2 text-sm text-gray-800 line-clamp-1"
                                         title="{{ Str::limit($popular['resumen'], 70) }}">
-                                        {{ Str::limit($popular['resumen'], 25) }}
+                                        {{ Str::limit($popular['resumen'], 15) }}
                                     </p>
                                 </div>
     
@@ -95,7 +95,7 @@
                                             </path>
                                         </svg>
                                         <span class="mt-2 xl:mt-0">
-                                            {{ Str::limit($popular['clase'], 11) }}
+                                            {{ Str::limit($popular['clase'], 5) }}
                                         </span>
                                     </p>
                                     <p class="inline-flex flex-col xl:flex-row xl:items-center text-gray-800">
@@ -106,6 +106,7 @@
                                             </path>
                                         </svg>
                                         <span class="mt-2 xl:mt-0">
+                                            {{$popular['consecutivo']}}
     
                                         </span>
                                     </p>
