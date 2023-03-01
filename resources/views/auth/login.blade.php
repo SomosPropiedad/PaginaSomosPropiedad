@@ -26,7 +26,7 @@
                  <div class="form-container">
                      <div class="form-content">
 
-                         <h1 class="">Iniciar sesión en <a href="index.html"><span class="brand-name">Somos Propiedad</span></a></h1>
+                         <h1 class="">Iniciar sesión en <a href="{{route('/')}}"><span class="brand-name">Somos Propiedad</span></a></h1>
                          <p class="signup-link">¿Nuevo aqui? <a href="{{ route('register') }}">Create una cuenta</a></p>
 
                          <x-jet-validation-errors class="mb-4" />
