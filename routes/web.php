@@ -67,6 +67,3 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('/', function () {
-    return redirect()->secure('/');
-});
